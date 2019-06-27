@@ -40,3 +40,5 @@ export const addSmurf = newSmurf => dispatch => {
    dispatch({ type: ERROR, payload: err });
   });
 };
+
+// export const updateSmurf = id => dispatch => {};
