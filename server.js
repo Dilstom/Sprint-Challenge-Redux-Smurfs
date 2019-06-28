@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const port = 3333;
+const token =
+ 'esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ';
 
 const server = express();
 server.use(express.json());
