@@ -30,6 +30,8 @@ class App extends Component {
       })}
      </div>
     )}
+    <Route path="/login" component={LoginForm} />
+    <PrivateRoute path="/api/smurfs" component={Smurfs} />
    </div>
   );
  }
