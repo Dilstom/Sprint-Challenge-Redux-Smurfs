@@ -41,4 +41,14 @@ export const addSmurf = newSmurf => dispatch => {
   });
 };
 
-// export const updateSmurf = id => dispatch => {};
+export const updateSmurf = (id, newSmurf) => dispatch => {
+ axios
+  .put(`http://localhost:3333/smurfs/${id}`, newSmurf)
+  .then(res => {
+   console.log(' checking res in updateSmurf', res);
+   dispatch({ type: SUCCESS, payload: res.data });
+  })
+  .catch(err => {
+   dispatch({ type: ERROR, payload: err });
+  });
+};
