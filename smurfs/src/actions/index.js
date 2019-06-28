@@ -1,4 +1,3 @@
-import axios from 'axios';
 import withAuth from '../utils/withAuth';
 /* 
   Action Types Go Here!
