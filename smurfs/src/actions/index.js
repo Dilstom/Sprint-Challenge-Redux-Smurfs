@@ -64,3 +64,21 @@ export const deleteSmurf = id => dispatch => {
    dispatch({ type: ERROR, payload: err });
   });
 };
+
+export const login = creds => dispatch => {
+ dispatch({ type: LOGIN_START });
+ return (
+  withAuth()
+   //   .post('http://localhost:3333/api/login', creds)
+   .post('/login', creds)
+   .then(res => {
+    console.log('RES', res);
+    localStorage.setItem('userToken', res.data.payload);
+    dispatch({ type: LOGIN_SUCCESS });
+    return true;
+   })
+   .catch(err =>
+    dispatch({ type: LOGIN_ERROR, payload: err.response.data.error })
+   )
+ );
+};
