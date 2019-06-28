@@ -65,6 +65,7 @@ class Smurf extends React.Component {
     ) : (
      <button onClick={this.toggleUpdate}>Update</button>
     )}
+    <button onClick={this.handleDelete}>Delete</button>
    </div>
   );
  }
