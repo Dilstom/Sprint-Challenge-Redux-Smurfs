@@ -60,7 +60,18 @@ server.post('/smurfs', (req, res) => {
   res.json(smurfs);
 });
 
-server.put('/smurfs/:id', (req, res) => {
+server.post('/api/login', (req, res) => {
+ const { username, password } = req.body;
+ if (username === 'admin' && password === 'admin') {
+  req.loggedIn = true;
+  res.status(200).json({
+   payload: token,
+  });
+ } else {
+  res.status(403).json({ error: 'Username of Password incorrect' });
+ }
+});
+
   const { id } = req.params;
   const { name, age, height } = req.body;
   const findSmurfById = smurf => {
