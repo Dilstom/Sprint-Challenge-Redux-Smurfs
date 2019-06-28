@@ -7,6 +7,9 @@ export const FETCH_START = 'FETCH_START';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const ERROR = 'ERROR';
 export const SUCCESS = 'SUCCESS';
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
