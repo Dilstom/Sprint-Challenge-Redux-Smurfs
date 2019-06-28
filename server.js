@@ -14,6 +14,15 @@ const sendUserError = (msg, res) => {
   return;
 };
 
+function authenticator(req, res, next) {
+ const { authorization } = req.headers;
+ if (authorization === token) {
+  next();
+ } else {
+  res.status(403).json({ error: 'You must be logged in to see this page' });
+ }
+}
+
 let smurfs = [
   {
     name: 'Brainey',
