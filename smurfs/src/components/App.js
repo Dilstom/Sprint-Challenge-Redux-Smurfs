@@ -20,15 +20,11 @@ class App extends Component {
   return (
    <div className="App">
     <h1>SMURFS! 2.0 W/ Redux</h1>
-    <AddSmurfForm />
-    {this.props.fetchingSmurfs ? (
-     <h3>Loading...</h3>
-    ) : (
-     <div>
-      {this.props.smurfs.map(smurf => {
-       return <Smurf key={smurf.id} smurf={smurf} />;
-      })}
-     </div>
+    <Link to="/login">Login Form </Link>
+
+    <Link to="/api/smurfs"> Smurfs Village</Link>
+    {localStorage.getItem('userToken') ? null : (
+     <h3>Please, login to use this app</h3>
     )}
     <Route path="/login" component={LoginForm} />
     <PrivateRoute path="/api/smurfs" component={Smurfs} />
