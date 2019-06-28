@@ -33,7 +33,7 @@ export const addSmurf = newSmurf => dispatch => {
  axios
   .post('http://localhost:3333/smurfs', newSmurf)
   .then(res => {
-   console.log(' checking res in addSmurf: ', res);
+   //    console.log(' checking res in addSmurf: ', res);
    dispatch({ type: SUCCESS, payload: res.data });
   })
   .catch(err => {
@@ -45,7 +45,19 @@ export const updateSmurf = (id, newSmurf) => dispatch => {
  axios
   .put(`http://localhost:3333/smurfs/${id}`, newSmurf)
   .then(res => {
-   console.log(' checking res in updateSmurf', res);
+   //    console.log(' checking res in updateSmurf', res);
+   dispatch({ type: SUCCESS, payload: res.data });
+  })
+  .catch(err => {
+   dispatch({ type: ERROR, payload: err });
+  });
+};
+
+export const deleteSmurf = id => dispatch => {
+ axios
+  .delete(`http://localhost:3333/smurfs/${id}`)
+  .then(res => {
+   console.log(' checking res in delSmurf', res);
    dispatch({ type: SUCCESS, payload: res.data });
   })
   .catch(err => {
