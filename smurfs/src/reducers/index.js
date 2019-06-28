@@ -1,7 +1,15 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_START, FETCH_SUCCESS, ERROR, SUCCESS } from '../actions';
+import {
+ FETCH_START,
+ FETCH_SUCCESS,
+ ERROR,
+ SUCCESS,
+ LOGIN_START,
+ LOGIN_SUCCESS,
+ LOGIN_ERROR,
+} from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -40,11 +48,19 @@ export default function reducer(state = defaultState, action) {
     smurfs: action.payload,
     fetchingSmurfs: false,
     error: '',
+    errorLogin: '',
+    loading: false,
    };
   case ERROR:
    return { ...state, fetchingSmurfs: false, error: action.payload };
   case SUCCESS:
    return { ...state, addingSmurf: true, error: '', smurfs: action.payload };
+  case LOGIN_ERROR:
+   return { ...state, errorLogin: action.payload };
+  case LOGIN_START:
+   return { ...state, errorLogin: '', loading: true };
+  case LOGIN_SUCCESS:
+   return { ...state, errorLogin: '', loading: false };
   default:
    return state;
  }
