@@ -1,4 +1,5 @@
 import axios from 'axios';
+import withAuth from '../utils/withAuth';
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
@@ -23,8 +24,10 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const getSmurfs = () => dispatch => {
  dispatch({ type: FETCH_START });
- axios
-  .get('http://localhost:3333/smurfs')
+ withAuth()
+  //  axios
+  //   .get('http://localhost:3333/smurfs')
+  .get('/smurfs')
   .then(res => {
    //    console.log('checking res: ', res);
    dispatch({ type: FETCH_SUCCESS, payload: res.data });
@@ -33,8 +36,10 @@ export const getSmurfs = () => dispatch => {
 };
 
 export const addSmurf = newSmurf => dispatch => {
- axios
-  .post('http://localhost:3333/smurfs', newSmurf)
+ //  axios
+ //   .post('http://localhost:3333/smurfs', newSmurf)
+ withAuth()
+  .post('/smurfs', newSmurf)
   .then(res => {
    //    console.log(' checking res in addSmurf: ', res);
    dispatch({ type: SUCCESS, payload: res.data });
@@ -45,8 +50,10 @@ export const addSmurf = newSmurf => dispatch => {
 };
 
 export const updateSmurf = (id, newSmurf) => dispatch => {
- axios
-  .put(`http://localhost:3333/smurfs/${id}`, newSmurf)
+ //  axios
+ //   .put(`http://localhost:3333/smurfs/${id}`, newSmurf)
+ withAuth()
+  .put(`/smurfs/${id}`, newSmurf)
   .then(res => {
    //    console.log(' checking res in updateSmurf', res);
    dispatch({ type: SUCCESS, payload: res.data });
@@ -57,8 +64,10 @@ export const updateSmurf = (id, newSmurf) => dispatch => {
 };
 
 export const deleteSmurf = id => dispatch => {
- axios
-  .delete(`http://localhost:3333/smurfs/${id}`)
+ //  axios
+ //   .delete(`http://localhost:3333/smurfs/${id}`)
+ withAuth()
+  .delete(`/smurfs/${id}`)
   .then(res => {
    console.log(' checking res in delSmurf', res);
    dispatch({ type: SUCCESS, payload: res.data });
