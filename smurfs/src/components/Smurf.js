@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateSmurf } from '../actions';
+import { updateSmurf, deleteSmurf } from '../actions';
 
 class Smurf extends React.Component {
  constructor() {
@@ -30,6 +30,10 @@ class Smurf extends React.Component {
   e.preventDefault();
   this.props.updateSmurf(this.props.smurf.id, this.state.smurf);
   this.setState({ show: !this.state.show });
+ };
+
+ handleDelete = e => {
+  this.props.deleteSmurf(this.props.smurf.id);
  };
 
  render() {
@@ -73,5 +77,5 @@ class Smurf extends React.Component {
 
 export default connect(
  null,
- { updateSmurf }
+ { updateSmurf, deleteSmurf }
 )(Smurf);
