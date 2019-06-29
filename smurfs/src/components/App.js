@@ -12,17 +12,29 @@ import PrivateRoute from './PrivateRoute';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
- constructor() {
-  super();
+ constructor(props) {
+  super(props);
   this.state = {
-   auth: false,
+   //    header: '',
   };
  }
+
+ handleLogout = e => {
+  localStorage.removeItem('userToken');
+  window.location.reload();
+ };
+
  render() {
   return (
    <div className="App">
     <h1>SMURFS! 2.0 W/ Redux</h1>
-    <Link to="/login">Login Form </Link>
+    {/* <h3>{this.state.header !== '' ? `Welcome ${this.state.header}` : null}</h3> */}
+
+    {localStorage.getItem('userToken') ? (
+     <button onClick={this.handleLogout}>Logout</button>
+    ) : (
+     <Link to="/login">Login Form </Link>
+    )}
 
     <Link to="/api/smurfs"> Smurfs Village</Link>
     {localStorage.getItem('userToken') ? null : (
