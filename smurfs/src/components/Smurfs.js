@@ -35,7 +35,7 @@ class Smurfs extends Component {
 }
 
 const mapStateToProps = state => {
- console.log('state', state);
+ //  console.log('state in smurfs', state);
  return {
   smurfs: state.smurfs,
   fetchingSmurfs: state.fetchingSmurfs,
