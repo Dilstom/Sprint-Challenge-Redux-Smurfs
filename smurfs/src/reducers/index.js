@@ -29,6 +29,7 @@ const defaultState = {
  updatingSmurf: false,
  deletingSmurf: false,
  error: null,
+ //  username: '',
 };
 /*
   You'll only need one smurf reducer for this project.
@@ -60,7 +61,12 @@ export default function reducer(state = defaultState, action) {
   case LOGIN_START:
    return { ...state, errorLogin: '', loading: true };
   case LOGIN_SUCCESS:
-   return { ...state, errorLogin: '', loading: false };
+   return {
+    ...state,
+    errorLogin: '',
+    loading: false,
+    // username: action.payload,
+   };
   default:
    return state;
  }
