@@ -66,6 +66,7 @@ server.post('/api/login', (req, res) => {
   req.loggedIn = true;
   res.status(200).json({
    payload: token,
+   userName: username,
   });
  } else {
   res.status(403).json({ error: 'Username of Password incorrect' });
